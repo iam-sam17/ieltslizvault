@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="lizGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Rounded Badge -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#lizGrad)"/>
+  <!-- Inner Border Highlight -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+  <!-- Bold Modern 'LIZ' Lettermark -->
+  <text x="32" y="39" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="21" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">LIZ</text>
+  <!-- Subtle Top-Right Star Sparkle -->
+  <path d="M47 12 L48.5 16 L52.5 17.5 L48.5 19 L47 23 L45.5 19 L41.5 17.5 L45.5 16 Z" fill="#fde047"/>
+</svg>

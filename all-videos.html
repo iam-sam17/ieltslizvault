@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All 47 IELTS Liz Video Masterclasses — Complete Video Vault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="brand-wrapper">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-badge">LIZ</div>
+        <div>
+          <div class="brand-title">IELTS Liz Vault</div>
+          <span class="brand-subtitle">All Video Masterclasses</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- POMODORO TIMER -->
+    <div class="timer-widget">
+      <span class="timer-tag">Focus</span>
+      <button class="timer-step-btn" onclick="adjustTime(-1)">-</button>
+      <span class="timer-digits" id="timerDisplay">25:00</span>
+      <button class="timer-step-btn" onclick="adjustTime(1)">+</button>
+      <button class="timer-action-btn" id="startBtn" onclick="toggleTimer()">Start</button>
+      <button class="timer-step-btn" onclick="resetTimer()">↺</button>
+    </div>
+
+    <!-- THEME SWITCHER -->
+    <div class="theme-switch">
+      <button class="theme-btn active" data-theme-val="dark" onclick="setTheme('dark')" title="Dark Mode">🌙</button>
+      <button class="theme-btn" data-theme-val="light" onclick="setTheme('light')" title="Light Mode">☀️</button>
+      <button class="theme-btn" data-theme-val="cyberpunk" onclick="setTheme('cyberpunk')" title="Cyberpunk Mode">⚡</button>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="main-wrapper">
+
+    <!-- HERO -->
+    <section class="hero-header">
+      <div class="hero-label">Complete Archive</div>
+      <h1 class="hero-title">🎬 All 47 IELTS Liz Video Masterclasses</h1>
+      <p class="hero-description">
+        The definitive collection of Elizabeth Ferguson's YouTube video lessons. Filter by module, search by keywords, watch in the distraction-free studio player, and take synchronized markdown study notes.
+      </p>
+
+      <div class="controls-toolbar">
+        <div class="search-bar-wrap">
+          <span class="search-icon-symbol">🔍</span>
+          <input type="text" id="videoSearchInput" class="search-input-field" placeholder="Filter videos by title, topic, or module...">
+        </div>
+        <div class="sort-bar-wrap">
+          <label for="videoSortSelect" class="sort-label">⚡ Sort by:</label>
+          <div class="sort-select-wrapper">
+            <select id="videoSortSelect" class="sort-select-dropdown" onchange="handleSortChange(this.value)">
+              <option value="default">✨ Default / Recommended</option>
+              <option value="zayed-plan">👑 Zayed's Master Plan</option>
+              <option value="index-asc">📅 Oldest First</option>
+              <option value="index-desc">🆕 Latest / Newest First</option>
+              <option value="duration-asc">⏱️ Duration: Shortest First</option>
+              <option value="duration-desc">⏳ Duration: Longest First</option>
+              <option value="title-asc">🔤 Title: A → Z</option>
+              <option value="title-desc">🔤 Title: Z → A</option>
+              <option value="unwatched">🎯 Incomplete / To Watch</option>
+              <option value="completed">✅ Completed First</option>
+              <option value="saved">⭐ Saved / Bookmarked First</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE FILTER BUTTONS -->
+    <div class="subpage-tabs-bar" style="flex-wrap:wrap;">
+      <button class="subpage-tab-btn active" onclick="filterVideos('all', this)">All Masterclasses (<span id="countAll">47</span>)</button>
+      <button class="subpage-tab-btn" onclick="filterVideos('listening', this)">🎧 Listening</button>
+      <button class="subpage-tab-btn" onclick="filterVideos('speaking', this)">🗣️ Speaking</button>
+      <button class="subpage-tab-btn" onclick="filterVideos('writing', this)">✍️ Writing (Task 1 & 2)</button>
+      <button class="subpage-tab-btn" onclick="filterVideos('reading', this)">📖 Reading</button>
+      <button class="subpage-tab-btn" onclick="filterVideos('saved', this)">★ Saved Bookmarks</button>
+    </div>
+
+    <!-- RESULTS INFO BAR -->
+    <div class="results-info-bar" id="resultsInfoBar">
+      <div class="results-count-badge" id="resultsCountDisplay">
+        Showing 47 videos
+      </div>
+      <div id="activeSortLabel" style="font-size:0.78rem; color:var(--text-faint);">
+        Sorted by: Recommended
+      </div>
+    </div>
+
+    <!-- VIDEOS GRID -->
+    <div class="content-items-grid" id="allVideosGrid">
+      <!-- Injected via JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>
+      IELTS Liz Master Vault — Dedicated to Elizabeth Ferguson (<a href="https://ieltsliz.com" target="_blank">ieltsliz.com</a>)
+    </div>
+    <div>
+      47 Masterclasses Curated Archive.
+    </div>
+  </footer>
+
+  <script src="blogs_data.js"></script>
+  <script src="videos_data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    let activeFilter = 'all';
+    let currentSort = 'default';
+
+    function handleSortChange(sortVal) {
+      currentSort = sortVal;
+      renderVideos();
+    }
+
+    function getSortLabelText(sortVal) {
+      switch(sortVal) {
+        case 'zayed-plan': return 'Zayed's Master Plan';
+        case 'index-asc': return 'Oldest First';
+        case 'index-desc': return 'Latest / Newest First';
+        case 'duration-asc': return 'Duration (Shortest First)';
+        case 'duration-desc': return 'Duration (Longest First)';
+        case 'title-asc': return 'Alphabetical (A → Z)';
+        case 'title-desc': return 'Alphabetical (Z → A)';
+        case 'unwatched': return 'Incomplete / Unwatched First';
+        case 'completed': return 'Completed First';
+        case 'saved': return 'Saved / Bookmarked First';
+        default: return 'Recommended';
+      }
+    }
+
+    function renderVideos() {
+      const grid = document.getElementById('allVideosGrid');
+      const searchVal = (document.getElementById('videoSearchInput').value || '').trim().toLowerCase();
+      const countDisplay = document.getElementById('resultsCountDisplay');
+      const sortLabelDisplay = document.getElementById('activeSortLabel');
+      
+      if (!grid || typeof LIZ_DATA === 'undefined') return;
+
+      if (sortLabelDisplay) {
+        sortLabelDisplay.innerText = `Sorted by: ${getSortLabelText(currentSort)}`;
+      }
+
+      if (activeFilter === 'saved') {
+        // Collect all saved videos
+        let savedVideos = (LIZ_DATA.videos || []).filter(v => bookmarkedItems.includes(v.id));
+        
+        // Collect all saved blogs
+        let savedBlogs = [];
+        if (typeof LIZ_BLOGS !== 'undefined') {
+          Object.keys(LIZ_BLOGS).forEach(catKey => {
+            (LIZ_BLOGS[catKey] || []).forEach(b => {
+              if (bookmarkedItems.includes(b.id)) {
+                savedBlogs.push(b);
+              }
+            });
+          });
+        }
+
+        let combined = [
+          ...savedVideos.map(v => ({ ...v, itemType: 'video' })),
+          ...savedBlogs.map(b => ({ ...b, itemType: 'blog' }))
+        ];
+
+        if (searchVal) {
+          combined = combined.filter(item => 
+            (item.title && item.title.toLowerCase().includes(searchVal)) ||
+            (item.category && item.category.toLowerCase().includes(searchVal)) ||
+            (item.description && item.description.toLowerCase().includes(searchVal))
+          );
+        }
+
+        // Apply sort to saved items
+        if (currentSort === 'title-asc') {
+          combined.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+        } else if (currentSort === 'title-desc') {
+          combined.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
+        } else if (currentSort === 'duration-asc') {
+          combined.sort((a, b) => parseDurationSec(a.duration) - parseDurationSec(b.duration));
+        } else if (currentSort === 'duration-desc') {
+          combined.sort((a, b) => parseDurationSec(b.duration) - parseDurationSec(a.duration));
+        } else if (currentSort === 'unwatched') {
+          combined.sort((a, b) => {
+            const aDone = a.itemType === 'video' ? watchedVideos.includes(a.id) : completedBlogs.includes(a.id);
+            const bDone = b.itemType === 'video' ? watchedVideos.includes(b.id) : completedBlogs.includes(b.id);
+            return (aDone ? 1 : 0) - (bDone ? 1 : 0);
+          });
+        } else if (currentSort === 'completed') {
+          combined.sort((a, b) => {
+            const aDone = a.itemType === 'video' ? watchedVideos.includes(a.id) : completedBlogs.includes(a.id);
+            const bDone = b.itemType === 'video' ? watchedVideos.includes(b.id) : completedBlogs.includes(b.id);
+            return (bDone ? 1 : 0) - (aDone ? 1 : 0);
+          });
+        }
+
+        if (countDisplay) {
+          countDisplay.innerText = `Showing ${combined.length} saved item${combined.length === 1 ? '' : 's'}`;
+        }
+
+        if (combined.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column:1/-1; text-align:center; padding:3.5rem 1.5rem; background:var(--bg-card); border:1px dashed var(--border-subtle); border-radius:var(--radius-md);">
+              <div style="font-size:2.5rem; margin-bottom:0.75rem;">★</div>
+              <h3 style="font-size:1.1rem; font-weight:700; color:var(--text-main); margin-bottom:0.4rem;">No Saved Bookmarks Yet</h3>
+              <p style="font-size:0.875rem; color:var(--text-muted); max-width:480px; margin:0 auto;">
+                Click the <strong>☆ Save</strong> button on any video masterclass or practice article to collect it here for quick access!
+              </p>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = combined.map(item => {
+          if (item.itemType === 'video') {
+            const isWatched = watchedVideos.includes(item.id);
+            return `
+              <div class="video-entry-card">
+                <div>
+                  <div class="entry-thumb-wrapper">
+                    <img src="https://img.youtube.com/vi/${item.id}/mqdefault.jpg" alt="${item.title}" class="entry-thumb-img" loading="lazy">
+                    <span class="entry-duration-tag">${item.duration || 'Video'}</span>
+                  </div>
+                  <h3 class="entry-card-title">${item.title}</h3>
+                  <p class="entry-card-desc">${item.description || 'Masterclass tutorial by Elizabeth Ferguson on IELTS.'}</p>
+                </div>
+                <div class="entry-card-actions">
+                  <a href="player.html?v=${item.id}" class="primary-card-btn">▶ Watch & Notes</a>
+                  <button class="secondary-card-btn ${isWatched ? 'active' : ''}" onclick="toggleVideoWatched('${item.id}', this)">${isWatched ? '✅ Completed' : 'Mark Done'}</button>
+                  <button class="secondary-card-btn active" onclick="toggleBookmark('${item.id}', this); renderVideos();">★ Saved</button>
+                  <a href="${getLizModuleUrl(item.category, item.title)}" target="_blank" rel="noopener noreferrer" class="secondary-card-btn" style="text-decoration:none;" title="Open official IELTS Liz module lessons">🔗 Liz Page ↗</a>
+                </div>
+              </div>
+            `;
+          } else {
+            const isDone = completedBlogs.includes(item.id);
+            return `
+              <div class="video-entry-card">
+                <div>
+                  <div class="entry-thumb-wrapper" style="background: var(--surface-hover); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary);">
+                    📄
+                    <span class="entry-duration-tag">Article</span>
+                  </div>
+                  <h3 class="entry-card-title">${item.title}</h3>
+                  <p class="entry-card-desc">${item.category}</p>
+                </div>
+                <div class="entry-card-actions">
+                  <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="primary-card-btn">🔗 Read on IELTS Liz</a>
+                  <button class="secondary-card-btn ${isDone ? 'active' : ''}" onclick="toggleBlogCompleted('${item.id}', this); renderVideos();">${isDone ? '✅ Completed' : 'Mark Read'}</button>
+                  <button class="secondary-card-btn active" onclick="toggleBookmark('${item.id}', this); renderVideos();">★ Saved</button>
+                </div>
+              </div>
+            `;
+          }
+        }).join('');
+        return;
+      }
+
+      let filtered = LIZ_DATA.videos.filter(v => {
+        // Category check (using strict module property for accuracy)
+        let matchesCategory = true;
+        if (activeFilter === 'listening') matchesCategory = v.module === 'listening';
+        else if (activeFilter === 'speaking') matchesCategory = v.module === 'speaking';
+        else if (activeFilter === 'writing') matchesCategory = v.module === 'writing';
+        else if (activeFilter === 'reading') matchesCategory = v.module === 'reading';
+
+        // Search check
+        let matchesSearch = true;
+        if (searchVal) {
+          matchesSearch = v.title.toLowerCase().includes(searchVal) ||
+                          v.category.toLowerCase().includes(searchVal) ||
+                          (v.description && v.description.toLowerCase().includes(searchVal));
+        }
+
+        return matchesCategory && matchesSearch;
+      });
+
+      // Apply Sort
+      filtered = sortVideoList(filtered, currentSort);
+
+      if (countDisplay) {
+        countDisplay.innerText = `Showing ${filtered.length} of ${LIZ_DATA.videos.length} video masterclasses`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; color:var(--text-muted);">No videos found matching your search or filter criteria.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(v => {
+        const isWatched = watchedVideos.includes(v.id);
+        const isSaved = bookmarkedItems.includes(v.id);
+        return `
+          <div class="video-entry-card">
+            <div>
+              <div class="entry-thumb-wrapper">
+                <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}" class="entry-thumb-img" loading="lazy">
+                <span class="entry-duration-tag">${v.duration || 'Video'}</span>
+              </div>
+              <h3 class="entry-card-title">${v.title}</h3>
+              <p class="entry-card-desc">${v.description || 'Masterclass tutorial by Elizabeth Ferguson on IELTS.'}</p>
+            </div>
+            <div class="entry-card-actions">
+              <a href="player.html?v=${v.id}" class="primary-card-btn">▶ Watch & Notes</a>
+              <button class="secondary-card-btn ${isWatched ? 'active' : ''}" onclick="toggleVideoWatched('${v.id}', this)">${isWatched ? '✅ Completed' : 'Mark Done'}</button>
+              <button class="secondary-card-btn ${isSaved ? 'active' : ''}" onclick="toggleBookmark('${v.id}', this);">${isSaved ? '★ Saved' : '☆ Save'}</button>
+              <a href="${getLizModuleUrl(v.category, v.title)}" target="_blank" rel="noopener noreferrer" class="secondary-card-btn" style="text-decoration:none;" title="Open official IELTS Liz module lessons">🔗 Liz Page ↗</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterVideos(category, btnEl) {
+      activeFilter = category;
+      document.querySelectorAll('.subpage-tab-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderVideos();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check URL hash for direct saved filter
+      if (window.location.hash.includes('saved')) {
+        const savedTab = Array.from(document.querySelectorAll('.subpage-tab-btn')).find(b => b.innerText.includes('Saved'));
+        if (savedTab) filterVideos('saved', savedTab);
+      } else {
+        renderVideos();
+      }
+      
+      const searchField = document.getElementById('videoSearchInput');
+      if (searchField) {
+        searchField.addEventListener('input', renderVideos);
+      }
+    });
+  </script>
+</body>
+</html>

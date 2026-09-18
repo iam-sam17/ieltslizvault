@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IELTS Extra Topics, 30+ Topic Vocab & Exam Day Vault — IELTS Liz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="brand-wrapper">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-badge">LIZ</div>
+        <div>
+          <div class="brand-title">IELTS Liz Vault</div>
+          <span class="brand-subtitle">Extra Topics & Vocab</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- POMODORO TIMER -->
+    <div class="timer-widget">
+      <span class="timer-tag">Focus</span>
+      <button class="timer-step-btn" onclick="adjustTime(-1)">-</button>
+      <span class="timer-digits" id="timerDisplay">25:00</span>
+      <button class="timer-step-btn" onclick="adjustTime(1)">+</button>
+      <button class="timer-action-btn" id="startBtn" onclick="toggleTimer()">Start</button>
+      <button class="timer-step-btn" onclick="resetTimer()">↺</button>
+    </div>
+
+    <!-- THEME SWITCHER -->
+    <div class="theme-switch">
+      <button class="theme-btn active" data-theme-val="dark" onclick="setTheme('dark')" title="Dark Mode">🌙</button>
+      <button class="theme-btn" data-theme-val="light" onclick="setTheme('light')" title="Light Mode">☀️</button>
+      <button class="theme-btn" data-theme-val="cyberpunk" onclick="setTheme('cyberpunk')" title="Cyberpunk Mode">⚡</button>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="main-wrapper">
+
+    <!-- HERO -->
+    <section class="hero-header">
+      <div class="hero-label">Resource Vault</div>
+      <h1 class="hero-title">💡 Extra Topics, 30+ Topic Vocab & Exam Advice</h1>
+      <p class="hero-description">
+        Essential high-band preparation tools by Elizabeth Ferguson. Explore topic-specific lexical resources, complete exam day checklists, computer vs paper test comparisons, and an interactive Band Score calculator.
+      </p>
+
+      <div class="search-bar-wrap">
+        <span class="search-icon-symbol">🔍</span>
+        <input type="text" class="search-input-field" placeholder="Search topic vocab, environment, education, technology (Ctrl + K)...">
+      </div>
+    </section>
+
+    <!-- TABS BAR -->
+    <div class="subpage-tabs-bar">
+      <button class="subpage-tab-btn active" onclick="switchTab('vocab')">📚 30+ Topic Vocabularies</button>
+      <button class="subpage-tab-btn" onclick="switchTab('checklist')">🎯 Exam Day Checklist</button>
+      <button class="subpage-tab-btn" onclick="switchTab('calc')">🧮 Band Score Calculator</button>
+      <button class="subpage-tab-btn" onclick="switchTab('comparison')">💻 Computer vs Paper</button>
+    </div>
+
+    <!-- TAB 1: 30+ TOPIC VOCABULARY -->
+    <div id="tab-vocab" class="tab-content-pane">
+      <div class="official-link-wrapper" style="text-align: center; margin-bottom: 2rem;">
+        <a href="https://ieltsliz.com/vocabulary/" target="_blank" class="primary-card-btn" style="display: inline-block; padding: 10px 20px; font-weight: 600; font-size: 1.1rem; text-decoration: none; border-radius: 8px;">🔗 View Official IELTS Liz Vocabulary Page</a>
+      </div>
+
+      <!-- TOPIC 1: ENVIRONMENT -->
+      <article class="article-reader-box" id="vocab_env">
+        <h2>🌿 1. Environment & Climate Change Vocabulary Bank</h2>
+        <p>Lexical resource accounts for 25% of your Writing and Speaking score. Use precise collocations:</p>
+        <ul>
+          <li><strong>Depletion of natural resources:</strong> The reduction of raw materials and energy reserves (<em>"Overconsumption has led to the alarming depletion of natural resources worldwide."</em>).</li>
+          <li><strong>Renewable energy infrastructure:</strong> Solar, wind, and hydroelectric power systems (<em>"Governments must subsidize renewable energy infrastructure to achieve carbon neutrality."</em>).</li>
+          <li><strong>Biodiversity loss:</strong> The extinction of flora and fauna species (<em>"Deforestation in tropical regions is the leading driver of catastrophic biodiversity loss."</em>).</li>
+          <li><strong>Eco-friendly alternatives:</strong> Sustainable products (<em>"Single-use plastics should be replaced with biodegradable and eco-friendly alternatives."</em>).</li>
+          <li><strong>Carbon footprint:</strong> Amount of greenhouse gases emitted (<em>"Consumers can actively reduce their carbon footprint by relying more on public transit."</em>).</li>
+        </ul>
+      </article>
+
+      <!-- TOPIC 2: EDUCATION -->
+      <article class="article-reader-box" id="vocab_edu">
+        <h2>🎓 2. Education & Academic Pedagogy Vocabulary Bank</h2>
+        <ul>
+          <li><strong>Holistic development:</strong> Comprehensive growth including academic, social, and emotional skills (<em>"Early childhood education should emphasize holistic development over rigid testing."</em>).</li>
+          <li><strong>Tertiary education:</strong> University and higher college level studies (<em>"Access to tertiary education plays a vital role in national socioeconomic mobility."</em>).</li>
+          <li><strong>Curriculum reform:</strong> Updating educational syllabi (<em>"Curriculum reform is urgently required to introduce practical financial literacy and coding."</em>).</li>
+          <li><strong>Rote memorization:</strong> Learning by repetition without deep understanding (<em>"Traditional classrooms that rely heavily on rote memorization often stifle students' critical thinking."</em>).</li>
+          <li><strong>Distance learning / Remote pedagogy:</strong> Online study (<em>"Distance learning offers unprecedented flexibility for adult learners balancing work and study."</em>).</li>
+        </ul>
+      </article>
+
+      <!-- TOPIC 3: TECHNOLOGY & AI -->
+      <article class="article-reader-box" id="vocab_tech">
+        <h2>🤖 3. Technology, Automation & Artificial Intelligence</h2>
+        <ul>
+          <li><strong>Technological disruption:</strong> Innovations that fundamentally transform industries (<em>"The rise of artificial intelligence represents a profound technological disruption to white-collar jobs."</em>).</li>
+          <li><strong>Algorithmic bias:</strong> Unfair systemic outcomes produced by automated systems (<em>"Developers must address algorithmic bias in recruitment software to ensure fair hiring practices."</em>).</li>
+          <li><strong>Sedentary lifestyle:</strong> Inactive physical routine driven by screen time (<em>"Excessive smartphone usage among adolescents contributes directly to a sedentary lifestyle and obesity."</em>).</li>
+          <li><strong>Technological obsolescence:</strong> Becoming outdated due to newer inventions (<em>"Manufacturing workers face the risk of skill obsolescence as automation replaces manual assembly."</em>).</li>
+        </ul>
+      </article>
+
+      <!-- TOPIC 4: CRIME & JUSTICE -->
+      <article class="article-reader-box" id="vocab_crime">
+        <h2>⚖️ 4. Crime, Law Enforcement & Justice System</h2>
+        <ul>
+          <li><strong>Rehabilitation programs:</strong> Re-educating offenders rather than purely punishing them (<em>"Incarceration alone rarely reduces crime; investment in rehabilitation programs produces far better outcomes."</em>).</li>
+          <li><strong>Deterrent effect:</strong> Discouraging individuals from committing illegal acts (<em>"Strict penalties and visible community policing serve as a potent deterrent against anti-social behavior."</em>).</li>
+          <li><strong>Recidivism rates:</strong> The tendency of convicted criminals to reoffend (<em>"Vocational training in prisons dramatically reduces recidivism rates upon release."</em>).</li>
+          <li><strong>Juvenile delinquency:</strong> Crimes committed by minors (<em>"Community youth centers provide constructive mentorship that prevents juvenile delinquency."</em>).</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <!-- TAB 2: EXAM DAY CHECKLIST -->
+    <div id="tab-checklist" class="tab-content-pane" style="display:none;">
+      <article class="article-reader-box" id="ext_m3">
+        <h2>🎯 Elizabeth's Official IELTS Exam Day Checklist</h2>
+        <blockquote>
+          <strong>Important Reminder:</strong> Being calm, organized, and confident on test day is worth half a band score. Do not cram new vocabulary on test morning!
+        </blockquote>
+
+        <h3>What to Bring into the Exam Room:</h3>
+        <ul>
+          <li><strong>Original Passport / National ID:</strong> MUST be the exact same document you registered with. Photocopies are not accepted!</li>
+          <li><strong>Pencils & Eraser:</strong> For paper-based test takers (HB or 2B pencils). Mechanical pencils are allowed in most test centers.</li>
+          <li><strong>Clear Water Bottle:</strong> Must be completely transparent with all labels removed.</li>
+        </ul>
+
+        <h3>Test Room Rules & Etiquette:</h3>
+        <ul>
+          <li><strong>Watches:</strong> Wristwatches (both digital and analog) are prohibited inside the examination room. A large digital clock is visible on the wall or on your computer screen.</li>
+          <li><strong>Washroom Breaks:</strong> You are not allowed to visit the bathroom during instructions, during the listening audio, or during the last 10 minutes of any section. Plan accordingly!</li>
+          <li><strong>Audio Check:</strong> In the listening test, sound is tested before starting. If your headphones are too quiet or crackling, raise your hand immediately!</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- TAB 3: BAND SCORE CALCULATOR -->
+    <div id="tab-calc" class="tab-content-pane" style="display:none;">
+      <article class="article-reader-box">
+        <h2>🧮 Interactive Overall IELTS Band Score Calculator</h2>
+        <p>Enter your expected scores for the four individual modules to calculate your official rounded overall Band Score:</p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin:1.5rem 0;">
+          <div>
+            <label style="font-weight:600; font-size:0.85rem; display:block; margin-bottom:0.4rem;">🎧 Listening Band:</label>
+            <select id="calcListening" class="search-input-field" onchange="calculateOverallScore()">
+              <option value="9.0">9.0</option><option value="8.5">8.5</option><option value="8.0" selected>8.0</option>
+              <option value="7.5">7.5</option><option value="7.0">7.0</option><option value="6.5">6.5</option>
+              <option value="6.0">6.0</option><option value="5.5">5.5</option><option value="5.0">5.0</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-weight:600; font-size:0.85rem; display:block; margin-bottom:0.4rem;">📖 Reading Band:</label>
+            <select id="calcReading" class="search-input-field" onchange="calculateOverallScore()">
+              <option value="9.0">9.0</option><option value="8.5">8.5</option><option value="8.0">8.0</option>
+              <option value="7.5" selected>7.5</option><option value="7.0">7.0</option><option value="6.5">6.5</option>
+              <option value="6.0">6.0</option><option value="5.5">5.5</option><option value="5.0">5.0</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-weight:600; font-size:0.85rem; display:block; margin-bottom:0.4rem;">✍️ Writing Band:</label>
+            <select id="calcWriting" class="search-input-field" onchange="calculateOverallScore()">
+              <option value="9.0">9.0</option><option value="8.5">8.5</option><option value="8.0">8.0</option>
+              <option value="7.5">7.5</option><option value="7.0" selected>7.0</option><option value="6.5">6.5</option>
+              <option value="6.0">6.0</option><option value="5.5">5.5</option><option value="5.0">5.0</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-weight:600; font-size:0.85rem; display:block; margin-bottom:0.4rem;">🗣️ Speaking Band:</label>
+            <select id="calcSpeaking" class="search-input-field" onchange="calculateOverallScore()">
+              <option value="9.0">9.0</option><option value="8.5">8.5</option><option value="8.0">8.0</option>
+              <option value="7.5" selected>7.5</option><option value="7.0">7.0</option><option value="6.5">6.5</option>
+              <option value="6.0">6.0</option><option value="5.5">5.5</option><option value="5.0">5.0</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.25rem; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:0.85rem; color:var(--text-muted);">Exact Average: <span id="exactAverage" style="font-family:var(--font-mono); font-weight:700; color:var(--text-main);">7.50</span></div>
+            <div style="font-size:0.75rem; color:var(--text-faint);">IELTS rounds .25 up to .5 and .75 up to next full band.</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--accent);">Overall Band Score</div>
+            <div id="overallScoreResult" style="font-size:2rem; font-weight:800; color:var(--success);">7.5</div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- TAB 4: COMPUTER VS PAPER -->
+    <div id="tab-comparison" class="tab-content-pane" style="display:none;">
+      <article class="article-reader-box" id="ext_m4">
+        <h2>💻 Computer-Delivered vs 📝 Paper-Based IELTS</h2>
+        <p>Both test versions feature identical difficulty, question types, scoring standards, and Speaking interviews (always face-to-face with an examiner):</p>
+        
+        <h3>Key Differences:</h3>
+        <ul>
+          <li><strong>Results Speed:</strong> Computer test results arrive in <strong>3 to 5 days</strong>, whereas paper test results take <strong>13 days</strong>.</li>
+          <li><strong>Writing Experience:</strong> On the computer, you have a live on-screen word counter and can easily cut, copy, paste, and edit sentences without messy eraser smudges.</li>
+          <li><strong>Reading Navigation:</strong> Computer splits the screen into passage on the left and questions on the right. You can highlight text and add digital notes directly.</li>
+          <li><strong>Headphones:</strong> Computer-delivered tests provide high-quality individual noise-cancelling headphones for the listening section.</li>
+        </ul>
+      </article>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>
+      IELTS Liz Master Vault — Dedicated to Elizabeth Ferguson (<a href="https://ieltsliz.com" target="_blank">ieltsliz.com</a>)
+    </div>
+    <div>
+      30+ Topic Vocabulary Banks & Resources.
+    </div>
+  </footer>
+
+  <script src="blogs_data.js"></script>
+  <script src="videos_data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    function switchTab(tabName) {
+      document.querySelectorAll('.subpage-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content-pane').forEach(pane => pane.style.display = 'none');
+      
+      const activeBtn = Array.from(document.querySelectorAll('.subpage-tab-btn')).find(b => b.innerText.toLowerCase().includes(tabName));
+      if (activeBtn) activeBtn.classList.add('active');
+      
+      const pane = document.getElementById('tab-' + tabName);
+      if (pane) pane.style.display = 'block';
+    }
+
+    function calculateOverallScore() {
+      const l = parseFloat(document.getElementById('calcListening').value);
+      const r = parseFloat(document.getElementById('calcReading').value);
+      const w = parseFloat(document.getElementById('calcWriting').value);
+      const s = parseFloat(document.getElementById('calcSpeaking').value);
+
+      const avg = (l + r + w + s) / 4;
+      document.getElementById('exactAverage').innerText = avg.toFixed(2);
+
+      // IELTS Rounding Logic
+      const decimal = avg - Math.floor(avg);
+      let rounded = Math.floor(avg);
+      if (decimal >= 0.75) {
+        rounded = Math.floor(avg) + 1.0;
+      } else if (decimal >= 0.25) {
+        rounded = Math.floor(avg) + 0.5;
+      } else {
+        rounded = Math.floor(avg);
+      }
+
+      document.getElementById('overallScoreResult').innerText = rounded.toFixed(1);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      calculateOverallScore();
+      if (window.location.hash.includes('tips') || window.location.hash.includes('checklist')) {
+        switchTab('checklist');
+      } else if (window.location.hash.includes('calc')) {
+        switchTab('calc');
+      } else if (window.location.hash.includes('comparison')) {
+        switchTab('comparison');
+      }
+    });
+  </script>
+</body>
+</html>

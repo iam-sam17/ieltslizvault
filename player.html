@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IELTS Liz Studio Player & Smart Study Notebook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="brand-wrapper">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-badge">LIZ</div>
+        <div>
+          <div class="brand-title">IELTS Liz Vault</div>
+          <span class="brand-subtitle">Studio Player & Notebook</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- POMODORO TIMER -->
+    <div class="timer-widget">
+      <span class="timer-tag">Focus</span>
+      <button class="timer-step-btn" onclick="adjustTime(-1)">-</button>
+      <span class="timer-digits" id="timerDisplay">25:00</span>
+      <button class="timer-step-btn" onclick="adjustTime(1)">+</button>
+      <button class="timer-action-btn" id="startBtn" onclick="toggleTimer()">Start</button>
+      <button class="timer-step-btn" onclick="resetTimer()">↺</button>
+    </div>
+
+    <!-- THEME SWITCHER -->
+    <div class="theme-switch">
+      <button class="theme-btn active" data-theme-val="dark" onclick="setTheme('dark')" title="Dark Mode">🌙</button>
+      <button class="theme-btn" data-theme-val="light" onclick="setTheme('light')" title="Light Mode">☀️</button>
+      <button class="theme-btn" data-theme-val="cyberpunk" onclick="setTheme('cyberpunk')" title="Cyberpunk Mode">⚡</button>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="main-wrapper player-page-wrapper">
+
+    <!-- STUDIO THEATER & STACKED NOTEBOOK -->
+    <div class="studio-theater-stack">
+
+      <!-- 1. CINEMA VIDEO PLAYER PANE -->
+      <div class="player-pane-box">
+        <div class="video-embed-wrapper">
+          <iframe 
+            id="videoIframe"
+            src="about:blank" 
+            title="IELTS Liz Tutorial" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div>
+          <div class="player-meta-row">
+            <div>
+              <h1 id="playerVideoTitle" style="font-size:1.25rem; font-weight:700; line-height:1.4; margin-bottom:0.25rem;">Loading Video...</h1>
+              <p id="playerVideoDesc" style="font-size:0.875rem; color:var(--text-muted); line-height:1.5;">
+                Lesson details and instructions by Elizabeth Ferguson.
+              </p>
+            </div>
+            <span id="playerCategoryTag" class="badge-tag">Tutorial</span>
+          </div>
+
+          <div class="player-actions-toolbar" style="margin-top:1rem;">
+            <button id="markCompletedBtn" class="primary-card-btn" onclick="toggleCurrentVideoCompleted()">
+              Mark Completed
+            </button>
+            <button id="saveBookmarkBtn" class="secondary-card-btn" onclick="toggleCurrentVideoBookmark()">
+              ☆ Save Lesson
+            </button>
+            <a id="lizOfficialLink" href="https://ieltsliz.com" target="_blank" rel="noopener noreferrer" class="secondary-card-btn" style="text-decoration:none;">
+              Official Liz Practice Test ↗
+            </a>
+            <button id="routineDrawerBtn" class="three-dots-btn" onclick="toggleRoutineDrawer()" title="Recommended Practice Routine">
+              💡 Routine ⋮
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. SMART STUDY NOTEBOOK (BELOW VIDEO) -->
+      <div class="notes-pane-box">
+        <div class="notes-header-row">
+          <div class="notes-title-text">
+            <span>📝</span>
+            <span>Study Notes & Key Takeaways</span>
+          </div>
+          <button class="export-btn" onclick="exportCurrentNotes()">📥 Export (.md)</button>
+        </div>
+
+        <textarea 
+          id="studyNotesEditor" 
+          class="notes-textarea-field" 
+          placeholder="# Key Takeaways & Vocabulary...&#10;- Write notes as you listen to Liz&#10;- Auto-saves instantly in your browser storage">
+        </textarea>
+
+        <div class="notes-footer-row">
+          <span id="noteSavedIndicator">Auto-saving enabled</span>
+          <span>Markdown Supported</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- PRACTICE ROUTINE OFFCANVAS DRAWER -->
+  <div id="routineBackdrop" class="drawer-backdrop" onclick="toggleRoutineDrawer()"></div>
+  <aside id="routineDrawer" class="routine-drawer-panel" aria-label="Practice Routine">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span>💡</span>
+        <span>Liz's Practice Routine</span>
+      </div>
+      <button class="drawer-close-btn" onclick="toggleRoutineDrawer()" title="Close Drawer">✕</button>
+    </div>
+    <div class="drawer-body">
+      <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:0.75rem; color:var(--text-main);">
+        3-Step Active Learning Framework
+      </h3>
+      <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:1.25rem; line-height:1.5;">
+        To maximize your band score improvement from this tutorial, Elizabeth Ferguson recommends this proven 3-step active study routine:
+      </p>
+      
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); padding:1rem; border-radius:var(--radius-md);">
+          <div style="font-weight:700; font-size:0.9rem; color:var(--accent-tag-text); margin-bottom:0.35rem;">
+            Step 1: Active Listening
+          </div>
+          <div style="font-size:0.83rem; color:var(--text-muted); line-height:1.5;">
+            Watch the video once without pausing. Focus on Elizabeth's explanations of the examiner marking criteria and common candidate traps.
+          </div>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); padding:1rem; border-radius:var(--radius-md);">
+          <div style="font-weight:700; font-size:0.9rem; color:var(--accent-tag-text); margin-bottom:0.35rem;">
+            Step 2: Synthesize in Notes
+          </div>
+          <div style="font-size:0.83rem; color:var(--text-muted); line-height:1.5;">
+            Use the Smart Notebook directly below the video player to write down key paraphrases, collocations, and grammatical structures.
+          </div>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); padding:1rem; border-radius:var(--radius-md);">
+          <div style="font-weight:700; font-size:0.9rem; color:var(--accent-tag-text); margin-bottom:0.35rem;">
+            Step 3: Direct Application
+          </div>
+          <div style="font-size:0.83rem; color:var(--text-muted); line-height:1.5;">
+            Open the official lesson link on <a href="https://ieltsliz.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:underline;">ieltsliz.com</a> and complete the accompanying practice questions or model essay analysis immediately.
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid var(--border-subtle);">
+        <button class="primary-card-btn" style="width:100%; justify-content:center; text-align:center;" onclick="toggleRoutineDrawer()">
+          ✓ Got it, Back to Lesson
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>
+      IELTS Liz Master Vault — Dedicated to Elizabeth Ferguson (<a href="https://ieltsliz.com" target="_blank">ieltsliz.com</a>)
+    </div>
+    <div>
+      <a href="all-videos.html">← Back to All Videos</a>
+    </div>
+  </footer>
+
+  <script src="videos_data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    let currentVideoId = 'y9Gn6aVRqaI';
+
+    function initPlayer() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const vidParam = urlParams.get('v');
+      
+      if (vidParam) {
+        currentVideoId = vidParam;
+      } else if (typeof LIZ_DATA !== 'undefined' && LIZ_DATA.videos.length > 0) {
+        currentVideoId = LIZ_DATA.videos[0].id;
+      }
+
+      // Load video details
+      let videoObj = null;
+      if (typeof LIZ_DATA !== 'undefined') {
+        videoObj = LIZ_DATA.videos.find(v => v.id === currentVideoId);
+      }
+
+      const iframe = document.getElementById('videoIframe');
+      const titleEl = document.getElementById('playerVideoTitle');
+      const descEl = document.getElementById('playerVideoDesc');
+      const catEl = document.getElementById('playerCategoryTag');
+      const lizLink = document.getElementById('lizOfficialLink');
+
+      iframe.src = `https://www.youtube-nocookie.com/embed/${currentVideoId}?autoplay=1&rel=0&playsinline=1`;
+
+      if (videoObj) {
+        titleEl.innerText = videoObj.title;
+        descEl.innerText = videoObj.description || 'Masterclass tutorial by Elizabeth Ferguson on IELTS.';
+        catEl.innerText = videoObj.category || 'Tutorial';
+        document.title = `${videoObj.title} — IELTS Liz Studio Player`;
+        
+        if (typeof getLizModuleUrl === 'function') {
+          lizLink.href = getLizModuleUrl(videoObj.category, videoObj.title);
+        } else {
+          lizLink.href = 'https://ieltsliz.com';
+        }
+      }
+
+      updatePlayerActionButtons();
+      initNoteTaker(currentVideoId);
+    }
+
+    function updatePlayerActionButtons() {
+      const completeBtn = document.getElementById('markCompletedBtn');
+      const saveBtn = document.getElementById('saveBookmarkBtn');
+      
+      const isWatched = watchedVideos.includes(currentVideoId);
+      const isSaved = bookmarkedItems.includes(currentVideoId);
+
+      if (completeBtn) {
+        completeBtn.innerText = isWatched ? '✅ Completed' : 'Mark Completed';
+        completeBtn.style.background = isWatched ? 'var(--success)' : 'var(--accent)';
+      }
+
+      if (saveBtn) {
+        saveBtn.innerText = isSaved ? '★ Saved' : '☆ Save Lesson';
+        saveBtn.classList.toggle('active', isSaved);
+      }
+    }
+
+    function toggleCurrentVideoCompleted() {
+      toggleVideoWatched(currentVideoId, null);
+      updatePlayerActionButtons();
+    }
+
+    function toggleCurrentVideoBookmark() {
+      toggleBookmark(currentVideoId, null);
+      updatePlayerActionButtons();
+    }
+
+    function exportCurrentNotes() {
+      exportNotes(`IELTS_Liz_${currentVideoId}_Notes.md`);
+    }
+
+    function toggleRoutineDrawer() {
+      const drawer = document.getElementById('routineDrawer');
+      const backdrop = document.getElementById('routineBackdrop');
+      if (drawer && backdrop) {
+        const isActive = drawer.classList.contains('active');
+        drawer.classList.toggle('active', !isActive);
+        backdrop.classList.toggle('active', !isActive);
+        document.body.style.overflow = !isActive ? 'hidden' : '';
+      }
+    }
+
+    // Keyboard shortcut to close drawer
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const drawer = document.getElementById('routineDrawer');
+        if (drawer && drawer.classList.contains('active')) {
+          toggleRoutineDrawer();
+        }
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initPlayer();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IELTS Listening Masterclass & Practice Vault — IELTS Liz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="brand-wrapper">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-badge">LIZ</div>
+        <div>
+          <div class="brand-title">IELTS Liz Vault</div>
+          <span class="brand-subtitle">Listening Module</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- POMODORO TIMER -->
+    <div class="timer-widget">
+      <span class="timer-tag">Focus</span>
+      <button class="timer-step-btn" onclick="adjustTime(-1)">-</button>
+      <span class="timer-digits" id="timerDisplay">25:00</span>
+      <button class="timer-step-btn" onclick="adjustTime(1)">+</button>
+      <button class="timer-action-btn" id="startBtn" onclick="toggleTimer()">Start</button>
+      <button class="timer-step-btn" onclick="resetTimer()">↺</button>
+    </div>
+
+    <!-- THEME SWITCHER -->
+    <div class="theme-switch">
+      <button class="theme-btn active" data-theme-val="dark" onclick="setTheme('dark')" title="Dark Mode">🌙</button>
+      <button class="theme-btn" data-theme-val="light" onclick="setTheme('light')" title="Light Mode">☀️</button>
+      <button class="theme-btn" data-theme-val="cyberpunk" onclick="setTheme('cyberpunk')" title="Cyberpunk Mode">⚡</button>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="main-wrapper">
+
+    <!-- HERO -->
+    <section class="hero-header">
+      <div class="hero-label">Core Module</div>
+      <h1 class="hero-title">🎧 IELTS Listening Masterclass & Full Archive</h1>
+      <p class="hero-description">
+        Elizabeth Ferguson's complete listening methodology. Learn how to navigate Sections 1 through 4, avoid spelling and plural traps, predict answers before audio plays, and excel in map labelling.
+      </p>
+
+      <div class="search-bar-wrap">
+        <span class="search-icon-symbol">🔍</span>
+        <input type="text" class="search-input-field" placeholder="Search listening lessons, traps, or audio practice (Ctrl + K)...">
+      </div>
+    </section>
+
+    <!-- TABS BAR -->
+    <div class="subpage-tabs-bar">
+      <button class="subpage-tab-btn active" onclick="switchTab('videos')">▶️ Video Masterclasses</button>
+      <button class="subpage-tab-btn" onclick="switchTab('blogs')">📄 Complete Blog Lessons & Practice</button>
+    </div>
+
+    <!-- TAB 1: VIDEOS -->
+    <div id="tab-videos" class="tab-content-pane">
+      <div class="results-info-bar" style="margin-top:0.5rem;">
+        <div class="results-count-badge" id="listeningCountDisplay">
+          Listening Masterclasses
+        </div>
+        <div class="sort-bar-wrap">
+          <label for="listeningSortSelect" class="sort-label">⚡ Sort:</label>
+          <div class="sort-select-wrapper">
+            <select id="listeningSortSelect" class="sort-select-dropdown" onchange="renderListeningVideos(this.value)">
+              <option value="default">✨ Default Order</option>
+              <option value="zayed-plan">👑 Zayed's Master Plan</option>
+              <option value="index-asc">📅 Oldest First</option>
+              <option value="index-desc">🆕 Latest / Newest First</option>
+              <option value="duration-asc">⏱️ Shortest First</option>
+              <option value="duration-desc">⏳ Longest First</option>
+              <option value="title-asc">🔤 Title: A → Z</option>
+              <option value="title-desc">🔤 Title: Z → A</option>
+              <option value="unwatched">🎯 Incomplete First</option>
+              <option value="completed">✅ Completed First</option>
+              <option value="saved">⭐ Saved First</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="content-items-grid" id="listeningVideosGrid">
+        <!-- Injected via JavaScript from LIZ_DATA -->
+      </div>
+    </div>
+
+    <!-- TAB 2: BLOG LESSONS & MULTITOPICS -->
+    <div id="tab-blogs" class="tab-content-pane" style="display:none;">
+      <div class="content-items-grid" id="blogsGrid">
+        <!-- Injected via JavaScript from LIZ_BLOGS -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>
+      IELTS Liz Master Vault — Dedicated to Elizabeth Ferguson (<a href="https://ieltsliz.com" target="_blank">ieltsliz.com</a>)
+    </div>
+    <div>
+      Complete Unabridged Archive.
+    </div>
+  </footer>
+
+  <script src="blogs_data.js"></script>
+  <script src="videos_data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    function switchTab(tabName) {
+      document.querySelectorAll('.subpage-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content-pane').forEach(pane => pane.style.display = 'none');
+      
+      const activeBtn = Array.from(document.querySelectorAll('.subpage-tab-btn')).find(b => b.innerText.toLowerCase().includes(tabName));
+      if (activeBtn) activeBtn.classList.add('active');
+      
+      const pane = document.getElementById('tab-' + tabName);
+      if (pane) pane.style.display = 'block';
+    }
+
+    let currentListeningSort = 'default';
+
+    function renderListeningVideos(sortVal) {
+      if (sortVal) currentListeningSort = sortVal;
+      const grid = document.getElementById('listeningVideosGrid');
+      const countEl = document.getElementById('listeningCountDisplay');
+      if (!grid || typeof LIZ_DATA === 'undefined') return;
+
+      let listeningVideos = LIZ_DATA.videos.filter(v => v.module === 'listening');
+      listeningVideos = sortVideoList(listeningVideos, currentListeningSort);
+
+      if (countEl) {
+        countEl.innerText = `Showing ${listeningVideos.length} Listening Masterclasses`;
+      }
+
+      grid.innerHTML = listeningVideos.map(v => {
+        const isWatched = watchedVideos.includes(v.id);
+        const isSaved = bookmarkedItems.includes(v.id);
+        return `
+          <div class="video-entry-card">
+            <div>
+              <div class="entry-thumb-wrapper">
+                <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}" class="entry-thumb-img" loading="lazy">
+                <span class="entry-duration-tag">${v.duration || 'Video'}</span>
+              </div>
+              <h3 class="entry-card-title">${v.title}</h3>
+              <p class="entry-card-desc">${v.description || 'Masterclass tutorial by Elizabeth Ferguson on IELTS listening.'}</p>
+            </div>
+            <div class="entry-card-actions">
+              <a href="player.html?v=${v.id}" class="primary-card-btn">▶ Watch & Notes</a>
+              <button class="secondary-card-btn ${isWatched ? 'active' : ''}" onclick="toggleVideoWatched('${v.id}', this)">${isWatched ? '✅ Completed' : 'Mark Done'}</button>
+              <button class="secondary-card-btn ${isSaved ? 'active' : ''}" onclick="toggleBookmark('${v.id}', this);">${isSaved ? '★ Saved' : '☆ Save'}</button>
+              <a href="${getLizModuleUrl(v.category, v.title)}" target="_blank" rel="noopener noreferrer" class="secondary-card-btn" style="text-decoration:none;" title="Open official IELTS Liz module lessons">🔗 Liz Page ↗</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render listening videos
+    document.addEventListener('DOMContentLoaded', () => {
+      renderListeningVideos();
+
+      
+      // Render blogs
+      const blogGrid = document.getElementById('blogsGrid');
+      if (blogGrid && typeof LIZ_BLOGS !== 'undefined') {
+        const blogs = LIZ_BLOGS['listening'];
+        blogGrid.innerHTML = blogs.map(b => {
+          const isWatched = completedBlogs.includes(b.id);
+          const isSaved = bookmarkedItems.includes(b.id);
+          return `
+            <div class="video-entry-card">
+              <div>
+                <div class="entry-thumb-wrapper" style="background: var(--surface-hover); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary);">
+                  📄
+                  <span class="entry-duration-tag">Article</span>
+                </div>
+                <h3 class="entry-card-title">${b.title}</h3>
+                <p class="entry-card-desc">${b.category}</p>
+              </div>
+              <div class="entry-card-actions">
+                <a href="${b.url}" target="_blank" class="primary-card-btn">🔗 Read on IELTS Liz</a>
+                <button class="secondary-card-btn ${isWatched ? 'active' : ''}" onclick="toggleBlogCompleted('${b.id}', this)">${isWatched ? '✅ Completed' : 'Mark Read'}</button>
+                <button class="secondary-card-btn ${isSaved ? 'active' : ''}" onclick="toggleBookmark('${b.id}', this)">${isSaved ? '★ Saved' : '☆ Save'}</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Check URL hash
+      if (window.location.hash.includes('blogs') || window.location.hash.includes('lis_m')) {
+        switchTab('blogs');
+        if (window.location.hash.length > 1) {
+          const targetEl = document.querySelector(window.location.hash);
+          if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  </script>
+</body>
+</html>

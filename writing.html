@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IELTS Writing Task 1 & Task 2 Master Vault — IELTS Liz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="brand-wrapper">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-badge">LIZ</div>
+        <div>
+          <div class="brand-title">IELTS Liz Vault</div>
+          <span class="brand-subtitle">Writing Module (Task 1 & 2)</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- POMODORO TIMER -->
+    <div class="timer-widget">
+      <span class="timer-tag">Focus</span>
+      <button class="timer-step-btn" onclick="adjustTime(-1)">-</button>
+      <span class="timer-digits" id="timerDisplay">25:00</span>
+      <button class="timer-step-btn" onclick="adjustTime(1)">+</button>
+      <button class="timer-action-btn" id="startBtn" onclick="toggleTimer()">Start</button>
+      <button class="timer-step-btn" onclick="resetTimer()">↺</button>
+    </div>
+
+    <!-- THEME SWITCHER -->
+    <div class="theme-switch">
+      <button class="theme-btn active" data-theme-val="dark" onclick="setTheme('dark')" title="Dark Mode">🌙</button>
+      <button class="theme-btn" data-theme-val="light" onclick="setTheme('light')" title="Light Mode">☀️</button>
+      <button class="theme-btn" data-theme-val="cyberpunk" onclick="setTheme('cyberpunk')" title="Cyberpunk Mode">⚡</button>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="main-wrapper">
+
+    <!-- HERO -->
+    <section class="hero-header">
+      <div class="hero-label">Core Module</div>
+      <h1 class="hero-title">✍️ IELTS Writing Masterclass & Model Essay Vault</h1>
+      <p class="hero-description">
+        The complete writing curriculum by Elizabeth Ferguson. Learn the 5 IELTS Task 2 essay structures, explore Band 9 model essays, master Academic Task 1 data reporting (Bar, Line, Pie, Map, Process), and conquer General Training letters.
+      </p>
+
+      <div class="search-bar-wrap">
+        <span class="search-icon-symbol">🔍</span>
+        <input type="text" class="search-input-field" placeholder="Search essays, Task 1 charts, letters, linking words (Ctrl + K)...">
+      </div>
+    </section>
+
+    <!-- TABS BAR -->
+    <div class="subpage-tabs-bar">
+      <button class="subpage-tab-btn active" onclick="switchTab('task2')">📝 Task 2 Essays & Structures</button>
+      <button class="subpage-tab-btn" onclick="switchTab('task1')">📊 Task 1 Academic & GT Letters</button>
+      <button class="subpage-tab-btn" onclick="switchTab('videos')">▶️ Video Masterclasses</button>
+      <button class="subpage-tab-btn" onclick="switchTab('linking')">🔗 Linking Words Bank</button>
+    </div>
+
+    <!-- TAB 1: TASK 2 ESSAYS & STRUCTURES -->
+    <div id="tab-task2" class="tab-content-pane">
+      <div class="official-link-wrapper" style="text-align: center; margin-bottom: 2rem;">
+        <a href="https://ieltsliz.com/ielts-writing-task-2/" target="_blank" class="primary-card-btn" style="display: inline-block; padding: 10px 20px; font-weight: 600; font-size: 1.1rem; text-decoration: none; border-radius: 8px;">🔗 View Official IELTS Liz Writing Task 2 Page</a>
+      </div>
+      
+      <!-- ESSAY STRUCTURE GUIDE -->
+      <article class="article-reader-box" id="wri_m1">
+        <h2>1. The 5 IELTS Task 2 Essay Structures by Liz</h2>
+        <p>
+          IELTS Task 2 requires you to write a formal academic essay of at least <strong>250 words in 40 minutes</strong>. It accounts for <strong>66% (two-thirds)</strong> of your total writing score.
+        </p>
+        <blockquote>
+          <strong>Liz's Golden Rule:</strong> Always use a 4-paragraph structure (Introduction + Body Paragraph 1 + Body Paragraph 2 + Conclusion). Keep your opinion crystal clear from the introduction right through to the final sentence!
+        </blockquote>
+
+        <h3>1. Opinion Essay (Agree / Disagree):</h3>
+        <ul>
+          <li><strong>Paragraph 1 (Introduction):</strong> Paraphrase the prompt statement + give your direct opinion (e.g., <em>"I completely agree with this view because..."</em>).</li>
+          <li><strong>Paragraph 2 (Body 1):</strong> First main reason supporting your opinion + detailed explanation + supporting example.</li>
+          <li><strong>Paragraph 3 (Body 2):</strong> Second main reason supporting your opinion + detailed explanation + supporting example.</li>
+          <li><strong>Paragraph 4 (Conclusion):</strong> Restate your thesis statement in new words + summarize the two supporting arguments.</li>
+        </ul>
+
+        <h3>2. Discussion Essay (Discuss Both Views & Give Opinion):</h3>
+        <ul>
+          <li><strong>Paragraph 1 (Introduction):</strong> Paraphrase both viewpoints + state which side you personally support.</li>
+          <li><strong>Paragraph 2 (Body 1):</strong> Discuss the first viewpoint (the side you disagree with or feel is weaker) + explain why some people hold this view.</li>
+          <li><strong>Paragraph 3 (Body 2):</strong> Discuss the second viewpoint (the side you support) + explain why you believe it is more convincing.</li>
+          <li><strong>Paragraph 4 (Conclusion):</strong> Summarize both sides and reaffirm your overall personal perspective.</li>
+        </ul>
+
+        <h3>3. Advantages & Disadvantages Essay:</h3>
+        <ul>
+          <li><strong>Type A (Outweigh Question):</strong> <em>"Do the advantages outweigh the disadvantages?"</em> State clearly in the introduction whether the benefits are stronger than the drawbacks. Dedicate Body 1 to the minor side and Body 2 to the dominant side with stronger points.</li>
+          <li><strong>Type B (Neutral Comparison):</strong> Discuss pros in Body 1 and cons in Body 2 without forcing a personal preference unless prompted.</li>
+        </ul>
+
+        <h3>4. Problem & Solution / Causes & Effects Essay:</h3>
+        <ul>
+          <li><strong>Paragraph 1:</strong> Paraphrase the issue + state that there are clear causes/problems and viable solutions.</li>
+          <li><strong>Paragraph 2 (Causes / Problems):</strong> Present 2 key causes or root problems with explanations.</li>
+          <li><strong>Paragraph 3 (Solutions):</strong> Present 2 practical, direct solutions corresponding to the causes identified in Body 1.</li>
+          <li><strong>Paragraph 4 (Conclusion):</strong> Reiterate the urgency of the problem and summarize the primary recommended actions.</li>
+        </ul>
+
+        <h3>5. Two-Part / Direct Question Essay:</h3>
+        <ul>
+          <li><strong>Paragraph 1:</strong> Paraphrase background prompt + answer both questions directly in brief.</li>
+          <li><strong>Paragraph 2 (Body 1):</strong> Fully address and develop Question 1 with supporting details.</li>
+          <li><strong>Paragraph 3 (Body 2):</strong> Fully address and develop Question 2 with supporting details.</li>
+          <li><strong>Paragraph 4 (Conclusion):</strong> Summarize both direct answers.</li>
+        </ul>
+      </article>
+
+      <!-- BAND 9 SAMPLE ESSAY -->
+      <article class="article-reader-box" id="wri_m2">
+        <h2>2. Band 9 Model Essay Breakdown by Elizabeth Ferguson</h2>
+        <blockquote>
+          <strong>Essay Topic:</strong> <em>Some people think that universities should provide graduates with the knowledge and skills needed in the workplace. Others think that the true function of a university should be to give access to knowledge for its own sake, regardless of whether the course is useful to an employer. Discuss both views and give your opinion.</em>
+        </blockquote>
+
+        <h3>Full Model Essay:</h3>
+        <p>
+          While some argue that higher education institutions ought to concentrate exclusively on preparing students for their future careers, others contend that universities should serve as centers of pure intellectual exploration. In my view, although acquiring employment-oriented skills is essential for economic stability, the fundamental purpose of tertiary education remains the pursuit of knowledge and the cultivation of critical thinking.
+        </p>
+        <p>
+          On the one hand, proponents of career-focused education highlight the practical demands of modern job markets. With rising tuition fees and intense competition for professional vacancies, students increasingly view a university degree as an investment in their financial future. Courses tailored to vocational sectors such as engineering, computer science, and accounting directly equip graduates with specialized technical competencies. Consequently, these graduates can transition smoothly into employment, which not only benefits individual career prospects but also fuels national economic productivity.
+        </p>
+        <p>
+          On the other hand, focusing solely on vocational training risks undermining the broader, transformative mission of universities. Historically, academia has been dedicated to philosophical inquiry, scientific discovery, and the preservation of culture. Exposure to subjects like history, literature, and pure mathematics nurtures intellectual curiosity, ethical judgment, and creative problem-solving. Furthermore, because technological advancements frequently render specific job skills obsolete, graduates who have developed flexible cognitive faculties through holistic education are often better prepared to adapt to evolving industries over the course of their lifetimes.
+        </p>
+        <p>
+          In conclusion, while aligning university curricula with industrial requirements provides undeniable practical benefits, I believe that universities must retain their identity as institutions dedicated to knowledge for its own sake. A balanced academic framework ensures that students graduate not merely as trained workers, but as enlightened, adaptable citizens.
+        </p>
+
+        <h3>Band 9 Lexical Highlights:</h3>
+        <ul>
+          <li><strong>Collocations:</strong> <em>intellectual exploration, vocational sectors, smooth transition into employment, national economic productivity, transformative mission, philosophical inquiry, intellectual curiosity, cognitive faculties, evolving industries.</em></li>
+          <li><strong>Cohesion & Coherence:</strong> Seamless progression using <em>"While some argue...", "In my view, although...", "On the one hand...", "Consequently...", "On the other hand...", "Furthermore...", "In conclusion..."</em>.</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <!-- TAB 2: TASK 1 ACADEMIC & GT LETTERS -->
+    <div id="tab-task1" class="tab-content-pane" style="display:none;">
+      <div class="official-link-wrapper" style="text-align: center; margin-bottom: 2rem;">
+        <a href="https://ieltsliz.com/ielts-writing-task-1-lessons-and-tips/" target="_blank" class="primary-card-btn" style="display: inline-block; padding: 10px 20px; font-weight: 600; font-size: 1.1rem; text-decoration: none; border-radius: 8px;">🔗 View Official IELTS Liz Writing Task 1 Page</a>
+      </div>
+      
+      <article class="article-reader-box" id="wri_m3">
+        <h2>1. Academic Writing Task 1: Essential Reporting Rules</h2>
+        <p>
+          Academic Task 1 requires you to write a factual report of at least <strong>150 words in 20 minutes</strong> describing visual information (Bar Chart, Line Graph, Pie Chart, Table, Map, or Process Diagram).
+        </p>
+        <blockquote>
+          <strong>Liz's Rule:</strong> You MUST write an Overview paragraph identifying the 2 or 3 most significant overall trends or features. If you do not include an overview, your maximum score for Task Achievement is capped at Band 5!
+        </blockquote>
+        <h3>The 4-Paragraph Task 1 Formula:</h3>
+        <ol>
+          <li><strong>Paragraph 1 (Introduction):</strong> Paraphrase the prompt title (e.g., <em>"The line graph illustrates changes in the consumption of three types of meat in the UK between 1979 and 2004."</em>).</li>
+          <li><strong>Paragraph 2 (Overview):</strong> State the main overall trends without specific figures (e.g., <em>"Overall, while the consumption of chicken saw a marked upward trend, beef and lamb experienced substantial declines over the period shown."</em>).</li>
+          <li><strong>Paragraph 3 (Body 1):</strong> Group similar categories together and provide precise data comparison (highest points, beginning vs end values).</li>
+          <li><strong>Paragraph 4 (Body 2):</strong> Group remaining categories and highlight points of intersection, lowest figures, and contrasting trends.</li>
+        </ol>
+      </article>
+
+      <article class="article-reader-box" id="wri_m5">
+        <h2>2. General Training Writing Task 1: Letter Writing Mastery</h2>
+        <p>
+          General Training candidates must write a letter in response to a given situation covering 3 specific bullet points in 150 words.
+        </p>
+        <h3>Letter Types & Tone:</h3>
+        <ul>
+          <li><strong>Formal Letter (To someone you don't know, e.g., Manager, Landlord):</strong>
+            <br><em>Salutation:</em> Dear Sir or Madam, / Dear Mr. Johnson,
+            <br><em>Opening:</em> I am writing to express my dissatisfaction with... / I am writing to inquire about...
+            <br><em>Sign-off:</em> Yours faithfully, (if name unknown) / Yours sincerely, (if name known)
+          </li>
+          <li><strong>Semi-Formal Letter (To a colleague, neighbor, or acquaintance):</strong>
+            <br><em>Salutation:</em> Dear Mr. Davis, / Dear Mrs. Smith,
+            <br><em>Tone:</em> Polite, professional yet personal.
+            <br><em>Sign-off:</em> Warm regards, / Best regards,
+          </li>
+          <li><strong>Informal Letter (To a close friend or family member):</strong>
+            <br><em>Salutation:</em> Dear Alex, / Hi Sarah,
+            <br><em>Opening:</em> Hope you are doing well! It was great to hear from you...
+            <br><em>Sign-off:</em> All the best, / See you soon,
+          </li>
+        </ul>
+      </article>
+
+    </div>
+
+    <!-- TAB 3: VIDEOS (Task 1 & Task 2 separated) -->
+    <div id="tab-videos" class="tab-content-pane" style="display:none;">
+
+      <!-- Sub-filter buttons for Task 1 / Task 2 -->
+      <div class="results-info-bar" style="margin-top:0.5rem; flex-wrap:wrap; gap:0.75rem;">
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <button id="vidSubTab-task1" class="secondary-card-btn active" onclick="switchVideoSubTab('task1')" style="font-size:0.82rem;">📊 Task 1 Videos</button>
+          <button id="vidSubTab-task2" class="secondary-card-btn" onclick="switchVideoSubTab('task2')" style="font-size:0.82rem;">📝 Task 2 Videos</button>
+          <button id="vidSubTab-all" class="secondary-card-btn" onclick="switchVideoSubTab('all')" style="font-size:0.82rem;">📚 All Writing Videos</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <span class="results-count-badge" id="writingCountDisplay">Writing Masterclasses</span>
+        </div>
+        <div class="sort-bar-wrap">
+          <label for="writingSortSelect" class="sort-label">⚡ Sort:</label>
+          <div class="sort-select-wrapper">
+            <select id="writingSortSelect" class="sort-select-dropdown" onchange="renderWritingVideos(null, this.value)">
+              <option value="default">✨ Default Order</option>
+              <option value="zayed-plan">👑 Zayed's Master Plan</option>
+              <option value="index-asc">📅 Oldest First</option>
+              <option value="index-desc">🆕 Latest / Newest First</option>
+              <option value="duration-asc">⏱️ Shortest First</option>
+              <option value="duration-desc">⏳ Longest First</option>
+              <option value="title-asc">🔤 Title: A → Z</option>
+              <option value="title-desc">🔤 Title: Z → A</option>
+              <option value="unwatched">🎯 Incomplete First</option>
+              <option value="completed">✅ Completed First</option>
+              <option value="saved">⭐ Saved First</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-items-grid" id="writingVideosGrid">
+        <!-- Injected via JavaScript from LIZ_DATA -->
+      </div>
+    </div>
+
+
+    <!-- TAB 4: LINKING WORDS BANK -->
+    <div id="tab-linking" class="tab-content-pane" style="display:none;">
+      <article class="article-reader-box" id="wri_m6">
+        <h2>🔗 Linking Words & Cohesive Devices Bank by Liz</h2>
+        <p>Cohesion and Coherence accounts for 25% of your IELTS Writing score. Use varied linking devices appropriately:</p>
+        
+        <h3>1. Introducing Examples:</h3>
+        <ul>
+          <li><em>For instance, / For example,</em></li>
+          <li><em>A pertinent illustration of this is...</em></li>
+          <li><em>To exemplify this point, ...</em></li>
+          <li><em>Such as / Namely</em></li>
+        </ul>
+
+        <h3>2. Contrasting Ideas:</h3>
+        <ul>
+          <li><em>On the other hand, / In contrast,</em></li>
+          <li><em>However, / Nevertheless, / Nonetheless,</em></li>
+          <li><em>While / Whereas / Although...</em></li>
+          <li><em>Conversely, ...</em></li>
+        </ul>
+
+        <h3>3. Adding Further Support:</h3>
+        <ul>
+          <li><em>Furthermore, / In addition, / Moreover,</em></li>
+          <li><em>Not only... but also...</em></li>
+          <li><em>Additionally, / What is more,</em></li>
+        </ul>
+
+        <h3>4. Cause & Effect / Results:</h3>
+        <ul>
+          <li><em>As a consequence, / Consequently,</em></li>
+          <li><em>Therefore, / Thus, / Hence,</em></li>
+          <li><em>This results in... / This leads to...</em></li>
+        </ul>
+
+        <h3>5. Concluding Statements:</h3>
+        <ul>
+          <li><em>In conclusion, / To sum up,</em></li>
+          <li><em>Overall, / On balance,</em></li>
+          <li><em>Taking everything into consideration, ...</em></li>
+        </ul>
+      </article>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>
+      IELTS Liz Master Vault — Dedicated to Elizabeth Ferguson (<a href="https://ieltsliz.com" target="_blank">ieltsliz.com</a>)
+    </div>
+    <div>
+      Complete Writing Vault (Task 1 & Task 2).
+    </div>
+  </footer>
+
+  <script src="blogs_data.js"></script>
+  <script src="videos_data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    function switchTab(tabName) {
+      document.querySelectorAll('.subpage-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content-pane').forEach(pane => pane.style.display = 'none');
+      
+      const activeBtn = Array.from(document.querySelectorAll('.subpage-tab-btn')).find(b => b.innerText.toLowerCase().includes(tabName));
+      if (activeBtn) activeBtn.classList.add('active');
+      
+      const pane = document.getElementById('tab-' + tabName);
+      if (pane) pane.style.display = 'block';
+    }
+
+    let currentWritingSort = 'default';
+    let currentVideoSubTab = 'task1'; // 'task1' | 'task2' | 'all'
+
+    function switchVideoSubTab(subTab) {
+      currentVideoSubTab = subTab;
+      // Update button active states
+      ['task1', 'task2', 'all'].forEach(t => {
+        const btn = document.getElementById('vidSubTab-' + t);
+        if (btn) btn.classList.toggle('active', t === subTab);
+      });
+      renderWritingVideos(subTab, null);
+    }
+
+    function renderWritingVideos(subTabArg, sortVal) {
+      if (subTabArg !== null && subTabArg !== undefined) currentVideoSubTab = subTabArg;
+      if (sortVal !== null && sortVal !== undefined) currentWritingSort = sortVal;
+
+      const grid = document.getElementById('writingVideosGrid');
+      const countEl = document.getElementById('writingCountDisplay');
+      if (!grid || typeof LIZ_DATA === 'undefined') return;
+
+      let writingVideos;
+      if (currentVideoSubTab === 'task1') {
+        // Strictly: category == 'Writing Task 1'
+        writingVideos = LIZ_DATA.videos.filter(v => v.category === 'Writing Task 1');
+      } else if (currentVideoSubTab === 'task2') {
+        // Strictly: category == 'Writing Task 2' plus related grammar/strategy
+        writingVideos = LIZ_DATA.videos.filter(v =>
+          v.category === 'Writing Task 2' ||
+          v.category === 'Writing Grammar' ||
+          v.category === 'Writing Strategy' ||
+          v.category === 'Writing Exam Rules'
+        );
+      } else {
+        // 'all': all writing module videos
+        writingVideos = LIZ_DATA.videos.filter(v => v.module === 'writing');
+      }
+
+      writingVideos = sortVideoList(writingVideos, currentWritingSort);
+
+      const subTabLabel = currentVideoSubTab === 'task1' ? 'Task 1' :
+                          currentVideoSubTab === 'task2' ? 'Task 2' : 'All Writing';
+      if (countEl) {
+        countEl.innerText = `Showing ${writingVideos.length} ${subTabLabel} Masterclasses`;
+      }
+
+      if (writingVideos.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; color:var(--text-muted);">No videos found for this selection.</div>`;
+        return;
+      }
+
+      grid.innerHTML = writingVideos.map(v => {
+        const isWatched = watchedVideos.includes(v.id);
+        const isSaved = bookmarkedItems.includes(v.id);
+        return `
+          <div class="video-entry-card">
+            <div>
+              <div class="entry-thumb-wrapper">
+                <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}" class="entry-thumb-img" loading="lazy">
+                <span class="entry-duration-tag">${v.duration || 'Video'}</span>
+              </div>
+              <h3 class="entry-card-title">${v.title}</h3>
+              <p class="entry-card-desc">${v.description || 'Masterclass tutorial by Elizabeth Ferguson on IELTS writing.'}</p>
+            </div>
+            <div class="entry-card-actions">
+              <a href="player.html?v=${v.id}" class="primary-card-btn">▶ Watch & Notes</a>
+              <button class="secondary-card-btn ${isWatched ? 'active' : ''}" onclick="toggleVideoWatched('${v.id}', this)">${isWatched ? '✅ Completed' : 'Mark Done'}</button>
+              <button class="secondary-card-btn ${isSaved ? 'active' : ''}" onclick="toggleBookmark('${v.id}', this);">${isSaved ? '★ Saved' : '☆ Save'}</button>
+              <a href="${getLizModuleUrl(v.category, v.title)}" target="_blank" rel="noopener noreferrer" class="secondary-card-btn" style="text-decoration:none;" title="Open official IELTS Liz module lessons">🔗 Liz Page ↗</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render writing videos
+    document.addEventListener('DOMContentLoaded', () => {
+      renderWritingVideos('task1', 'default');
+
+      
+      // Render blogs
+      const blogGrid = document.getElementById('blogsGrid');
+      if (blogGrid && typeof LIZ_BLOGS !== 'undefined') {
+        const blogs = LIZ_BLOGS['writing'];
+        blogGrid.innerHTML = blogs.map(b => {
+          const isWatched = completedBlogs.includes(b.id);
+          const isSaved = bookmarkedItems.includes(b.id);
+          return `
+            <div class="video-entry-card">
+              <div>
+                <div class="entry-thumb-wrapper" style="background: var(--surface-hover); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary);">
+                  📄
+                  <span class="entry-duration-tag">Article</span>
+                </div>
+                <h3 class="entry-card-title">${b.title}</h3>
+                <p class="entry-card-desc">${b.category}</p>
+              </div>
+              <div class="entry-card-actions">
+                <a href="${b.url}" target="_blank" class="primary-card-btn">🔗 Read on IELTS Liz</a>
+                <button class="secondary-card-btn ${isWatched ? 'active' : ''}" onclick="toggleBlogCompleted('${b.id}', this)">${isWatched ? '✅ Completed' : 'Mark Read'}</button>
+                <button class="secondary-card-btn ${isSaved ? 'active' : ''}" onclick="toggleBookmark('${b.id}', this)">${isSaved ? '★ Saved' : '☆ Save'}</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Check URL hash
+      if (window.location.hash.includes('videos') || window.location.hash.includes('task1-videos') || window.location.hash.includes('task2-videos')) {
+        switchTab('videos');
+      } else if (window.location.hash.includes('task1')) {
+        switchTab('task1');
+      } else if (window.location.hash.includes('linking')) {
+        switchTab('linking');
+      }
+    });
+  </script>
+</body>
+</html>

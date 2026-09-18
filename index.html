@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IELTS Liz Master Vault — Dedicated Learning Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOPBAR NAVIGATION -->
+  <header class="topbar">
+    <div class="brand-wrapper">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-badge">LIZ</div>
+        <div>
+          <div class="brand-title">IELTS Liz Vault</div>
+          <span class="brand-subtitle">Complete Educational Archive</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- POMODORO FOCUS SESSION TIMER -->
+    <div class="timer-widget">
+      <span class="timer-tag">Focus</span>
+      <button class="timer-step-btn" onclick="adjustTime(-1)" title="Decrease 1 min">-</button>
+      <span class="timer-digits" id="timerDisplay">25:00</span>
+      <button class="timer-step-btn" onclick="adjustTime(1)" title="Increase 1 min">+</button>
+      <button class="timer-action-btn" id="startBtn" onclick="toggleTimer()">Start</button>
+      <button class="timer-step-btn" onclick="resetTimer()" title="Reset">↺</button>
+    </div>
+
+    <!-- THEME SWITCHER -->
+    <div class="theme-switch">
+      <button class="theme-btn active" data-theme-val="dark" onclick="setTheme('dark')" title="Dark Mode">🌙</button>
+      <button class="theme-btn" data-theme-val="light" onclick="setTheme('light')" title="Light Mode">☀️</button>
+      <button class="theme-btn" data-theme-val="cyberpunk" onclick="setTheme('cyberpunk')" title="Cyberpunk Mode">⚡</button>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="main-wrapper">
+
+    <!-- HERO HEADER -->
+    <section class="hero-header">
+      <div class="hero-label">Curated Preparation Hub</div>
+      <h1 class="hero-title">IELTS Masterclasses & Complete Practice Archive</h1>
+      <p class="hero-description">
+        Access all YouTube video tutorials by Elizabeth Ferguson paired with the complete, unabridged lesson and model essay archive from ieltsliz.com. Follow structured module roadmaps, track completed lessons, and maintain study notes in one focused workspace.
+      </p>
+
+      <div class="search-bar-wrap">
+        <span class="search-icon-symbol">🔍</span>
+        <input type="text" class="search-input-field" placeholder="Search lessons, model essays, topic vocabulary (Ctrl + K)...">
+      </div>
+    </section>
+
+    <!-- OFFICIAL RESOURCES & CREDITS BANNER -->
+    <div class="official-attribution-card" style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); padding:1.25rem 1.5rem; margin-bottom:2.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.25rem;">
+      <div style="display:flex; align-items:center; gap:1rem; flex:1; min-width:280px;">
+        <div style="width:46px; height:46px; border-radius:12px; background:linear-gradient(135deg, #6366f1, #06b6d4); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:1.05rem; flex-shrink:0;">
+          LIZ
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:1rem; color:var(--text-main); display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+            Elizabeth Ferguson (IELTS Liz)
+            <span style="font-size:0.7rem; background:var(--accent-tag); color:var(--accent-tag-text); padding:2px 8px; border-radius:999px; font-weight:600;">Former IELTS Examiner & Creator</span>
+          </div>
+          <div style="font-size:0.82rem; color:var(--text-muted); margin-top:3px; line-height:1.4;">
+            All video tutorials, practice lessons, and model answers are original educational materials created by Elizabeth Ferguson.
+          </div>
+        </div>
+      </div>
+      
+      <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+        <a href="https://ieltsliz.com" target="_blank" rel="noopener noreferrer" class="secondary-card-btn" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.6rem 1.1rem; text-decoration:none; font-size:0.85rem; font-weight:600; border-radius:var(--radius-md);">
+          🌐 ieltsliz.com
+        </a>
+        <a href="https://www.youtube.com/@IELTSLiz" target="_blank" rel="noopener noreferrer" class="primary-card-btn" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.6rem 1.15rem; text-decoration:none; font-size:0.85rem; font-weight:600; border-radius:var(--radius-md); background:linear-gradient(135deg, #ef4444, #dc2626); border-color:#dc2626; color:#fff;">
+          ▶️ YouTube Channel
+        </a>
+      </div>
+    </div>
+
+    <!-- SECTION TITLE -->
+    <div class="section-heading-group">
+      <h2 class="section-main-heading">Core Preparation Modules</h2>
+      <p class="section-sub-heading">Select a module to access video masterclasses and full blog practice articles.</p>
+    </div>
+
+    <!-- MODULES BENTO GRID -->
+    <div class="modules-bento-grid">
+
+      <!-- 1. LISTENING -->
+      <div class="module-card-box">
+        <a href="listening.html" style="text-decoration: none; color: inherit; display: block; border-radius: 8px; cursor: pointer;" class="module-top-clickable">
+          <div class="module-header-row">
+            <h3 class="module-title-text">🎧 Listening</h3>
+          </div>
+          <p class="module-desc-text">
+            Section 1–4 strategies, map labelling methods, multiple choice elimination techniques, and full practice audio tests with transcripts.
+          </p>
+        </a>
+        <div class="dual-tracks-layout">
+          <a href="listening.html#videos" class="track-action-link">
+            <span class="track-name">▶️ Video Lessons</span>
+            <span class="track-sub">Masterclasses</span>
+          </a>
+          <a href="listening.html#blogs" class="track-action-link">
+            <span class="track-name">📄 Blog Archive</span>
+            <span class="track-sub">Tests & Scripts</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. SPEAKING -->
+      <div class="module-card-box">
+        <a href="speaking.html" style="text-decoration: none; color: inherit; display: block; border-radius: 8px; cursor: pointer;" class="module-top-clickable">
+          <div class="module-header-row">
+            <h3 class="module-title-text">🗣️ Speaking</h3>
+          </div>
+          <p class="module-desc-text">
+            Part 1 interview topics, Part 2 100+ Cue Card bank with Band 9 model answers, Part 3 discussions, and natural British idiomatic expressions.
+          </p>
+        </a>
+        <div class="dual-tracks-layout">
+          <a href="speaking.html#videos" class="track-action-link">
+            <span class="track-name">▶️ Video Lessons</span>
+            <span class="track-sub">Mock Tests & Tips</span>
+          </a>
+          <a href="speaking.html#blogs" class="track-action-link">
+            <span class="track-name">📄 Blog Archive</span>
+            <span class="track-sub">100+ Cue Cards</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. WRITING TASK 1 -->
+      <div class="module-card-box">
+        <a href="writing.html#task1" style="text-decoration: none; color: inherit; display: block; border-radius: 8px; cursor: pointer;" class="module-top-clickable">
+          <div class="module-header-row">
+            <h3 class="module-title-text">📊 Writing Task 1</h3>
+            <span class="badge-tag">Academic & GT</span>
+          </div>
+          <p class="module-desc-text">
+            Academic data reporting (Bar, Line, Pie, Table, Map, Process) and General Training formal, semi-formal, and informal letters with Band 9 samples.
+          </p>
+        </a>
+        <div class="dual-tracks-layout">
+          <a href="writing.html#task1-videos" class="track-action-link">
+            <span class="track-name">▶️ Video Lessons</span>
+            <span class="track-sub">Chart Analysis</span>
+          </a>
+          <a href="writing.html#task1-blogs" class="track-action-link">
+            <span class="track-name">📄 Blog Archive</span>
+            <span class="track-sub">50+ Sample Reports</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. WRITING TASK 2 -->
+      <div class="module-card-box">
+        <a href="writing.html#task2" style="text-decoration: none; color: inherit; display: block; border-radius: 8px; cursor: pointer;" class="module-top-clickable">
+          <div class="module-header-row">
+            <h3 class="module-title-text">✍️ Writing Task 2</h3>
+            <span class="badge-tag">Essay Vault</span>
+          </div>
+          <p class="module-desc-text">
+            5 essay types (Opinion, Discussion, Advantages/Disadvantages, Problem-Solution, Two-Part) with 100+ Band 9 model essays and paragraph formulas.
+          </p>
+        </a>
+        <div class="dual-tracks-layout">
+          <a href="writing.html#task2-videos" class="track-action-link">
+            <span class="track-name">▶️ Video Lessons</span>
+            <span class="track-sub">Essay Methods</span>
+          </a>
+          <a href="writing.html#task2-blogs" class="track-action-link">
+            <span class="track-name">📄 Blog Archive</span>
+            <span class="track-sub">100+ Model Essays</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. READING -->
+      <div class="module-card-box">
+        <a href="reading.html" style="text-decoration: none; color: inherit; display: block; border-radius: 8px; cursor: pointer;" class="module-top-clickable">
+          <div class="module-header-row">
+            <h3 class="module-title-text">📖 Reading</h3>
+          </div>
+          <p class="module-desc-text">
+            Skimming, scanning, True/False/Not Given distinction, Matching Headings strategies, and full practice passages with keyword tables.
+          </p>
+        </a>
+        <div class="dual-tracks-layout">
+          <a href="reading.html#videos" class="track-action-link">
+            <span class="track-name">▶️ Video Lessons</span>
+            <span class="track-sub">Strategy Guides</span>
+          </a>
+          <a href="reading.html#blogs" class="track-action-link">
+            <span class="track-name">📄 Blog Archive</span>
+            <span class="track-sub">Practice Passages</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. EXTRA TOPICS & VOCABULARY -->
+      <div class="module-card-box">
+        <a href="extra-topics.html" style="text-decoration: none; color: inherit; display: block; border-radius: 8px; cursor: pointer;" class="module-top-clickable">
+          <div class="module-header-row">
+            <h3 class="module-title-text">💡 Extra Topics & Vocab</h3>
+            <span class="badge-tag">Resource Vault</span>
+          </div>
+          <p class="module-desc-text">
+            30+ core topic vocabulary banks (Environment, Tech, Health, Crime), complex sentence rules, exam day checklist, and Band Score calculator.
+          </p>
+        </a>
+        <div class="dual-tracks-layout">
+          <a href="extra-topics.html#vocab" class="track-action-link">
+            <span class="track-name">📚 Topic Vocab</span>
+            <span class="track-sub">30+ Word Banks</span>
+          </a>
+          <a href="extra-topics.html#tips" class="track-action-link">
+            <span class="track-name">🎯 Exam Checklist</span>
+            <span class="track-sub">Band Score Calc</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- QUICK ACTIONS & ALL VIDEOS LINK -->
+    <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <div style="font-weight:600; font-size:0.95rem;">Browse All YouTube Masterclasses</div>
+        <div style="font-size:0.8rem; color:var(--text-muted);">Watch any video directly with synchronized smart markdown notes.</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+        <a href="all-videos.html#saved" class="secondary-card-btn" style="padding:0.55rem 1.15rem; font-size:0.85rem; font-weight:600; text-decoration:none;">
+          ★ Saved Bookmarks
+        </a>
+        <a href="all-videos.html" class="primary-card-btn" style="padding:0.55rem 1.25rem; font-size:0.85rem; text-decoration:none;">
+          View Complete Video Library →
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>
+      IELTS Liz Master Vault — Dedicated to Elizabeth Ferguson • <a href="https://ieltsliz.com" target="_blank" rel="noopener noreferrer">ieltsliz.com</a> • <a href="https://www.youtube.com/@IELTSLiz" target="_blank" rel="noopener noreferrer">YouTube Channel (@IELTSLiz)</a>
+    </div>
+    <div>
+      Educational study hub & curation. All original masterclasses and lesson materials &copy; Elizabeth Ferguson (IELTS Liz).
+    </div>
+  </footer>
+
+  <script src="videos_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
